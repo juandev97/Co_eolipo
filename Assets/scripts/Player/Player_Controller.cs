@@ -7,6 +7,7 @@ public class Player_Controller : MonoBehaviour
     static Animator anim;
     private move movi;
     public float AuxSpeed;
+    public GameObject hitbox;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +35,15 @@ public class Player_Controller : MonoBehaviour
 
         // golpe 
         if(Input.GetButtonDown("Fire1")){
+
             anim.SetBool("IsHitting",true);
+            hitbox.SetActive(true);
             movi.setSpeed(0f);
             
         }else{
             anim.SetBool("IsHitting",false);
             movi.setSpeed(AuxSpeed);
+            hitbox.SetActive(false);
         }
     }
 
