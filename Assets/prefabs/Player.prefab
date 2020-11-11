@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1422197513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1422197514}
+  - component: {fileID: 1422197515}
+  - component: {fileID: 1422197516}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1422197514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422197513}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 87.1, z: 45.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8178832487242740670}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1422197515
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422197513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 52.277733
+  m_Center: {x: 5.8651805, y: 22.904486, z: -3.749383}
+--- !u!114 &1422197516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422197513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27d5984dac83054eaf05f62ecdcdc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuerza: 10
+  fuerza2: 10
 --- !u!1 &36725780593275494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,6 +2255,7 @@ GameObject:
   - component: {fileID: 8506092076544971856}
   - component: {fileID: 8506092076544971871}
   - component: {fileID: 8506092076544971868}
+  - component: {fileID: 829694584}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2218,6 +2278,7 @@ Transform:
   - {fileID: 9066999638389426693}
   - {fileID: 4300164040421031860}
   - {fileID: 8506092075881415972}
+  - {fileID: 1422197514}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2283,9 +2344,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movimiento: 0
-  rotacion: 0
-  speed: 10
-  velocidadRotacion: 40
+  rotacion: 100
+  speed: 4
+  velocidadRotacion: 135
 --- !u!114 &8506092076544971868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2298,6 +2359,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39cc5c1af6e308499d0ee14ded8b0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AuxSpeed: 0
+--- !u!114 &829694584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8848126846499776772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41baf9dd07201248889bcc69e1bf23f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!1 &8898290676173016189
 GameObject:
   m_ObjectHideFlags: 0

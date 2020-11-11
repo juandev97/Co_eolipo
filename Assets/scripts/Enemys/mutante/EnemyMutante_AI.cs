@@ -14,9 +14,10 @@ public class EnemyMutante_AI : MonoBehaviour
     private Animator Manim;
     private Collider AtackColl;
 
-   
+    //private Life_Sys lf;
     public float fuerza = 15f;
     public float fuerza2 = 10f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -54,11 +55,18 @@ public class EnemyMutante_AI : MonoBehaviour
             Manim.SetInteger("moving",1);
             Manim.SetInteger("battle",0);
             this.transform.Translate(0, 0, speed * Time.deltaTime);
-        }else if(Vector3.Distance(transform.position, lookAtGoal) <= disMinima){
+        }else if(Vector3.Distance(transform.position, lookAtGoal) < disMinima){
 
             Manim.SetInteger("moving",0);
             
+            if(!AtackColl.enabled){
             StartCoroutine(ataque());
+            }else{
+            
+                
+                StartCoroutine(End_ataque());
+                 
+            }
 
         }else{
             Manim.SetInteger("battle",0);
@@ -73,17 +81,23 @@ public class EnemyMutante_AI : MonoBehaviour
         Manim.SetInteger("battle",1);
 
         atack = Random.Range(2,5);
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(2.6f);
 
         
         Manim.SetInteger("moving",atack);
         AtackColl.enabled = true;
        // Manim.SetInteger("moving",0);
 
-        yield return new WaitForSeconds(1.5f);
-        AtackColl.enabled = false;
+ //         yield return new WaitForSeconds(1.8f);
+//      AtackColl.enabled = false;
 
     }
+
+
+     IEnumerator End_ataque(){
+             yield return new WaitForSeconds(.86f);
+              AtackColl.enabled = false;
+     }
 
 
 private void OnTriggerEnter(Collider other) {
@@ -93,6 +107,7 @@ private void OnTriggerEnter(Collider other) {
         other.GetComponent<Rigidbody>().AddForce(transform.forward  * fuerza, ForceMode.Impulse);
         other.GetComponent<Rigidbody>().AddForce(0, fuerza2, 0);
         other.GetComponent<Animator>().SetTrigger("IsHurt");
+        other.GetComponent<Life_Sys>().TakeDamage(5);
     }
 }
 

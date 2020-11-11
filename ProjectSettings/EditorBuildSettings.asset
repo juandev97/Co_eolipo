@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 29c358a368bc98f4eaef675f54522a8f
+  - enabled: 1
+    path: Assets/Scenes/Nivel Lab Capsula.unity
+    guid: b2fa8882363c4644b93046de18bcbf19
+  - enabled: 1
+    path: Assets/Scenes/TestRoom.unity
+    guid: 88679b8875d4be049ab414c0d1655f55
   m_configObjects: {}
