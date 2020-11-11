@@ -57,11 +57,13 @@
   <ItemGroup>
      <Compile Include="Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
      <Compile Include="Assets\Modelos\1\Mutante\Script\THC6_ctrl.cs" />
+     <Compile Include="Assets\NextLevel.cs" />
      <Compile Include="Assets\scripts\Enemys\mutante\EnemyMutante_AI.cs" />
      <Compile Include="Assets\scripts\Enemys\spawner.cs" />
      <Compile Include="Assets\scripts\Enemys\wolf\Enemy_AI.cs" />
      <Compile Include="Assets\scripts\Level\Door_open.cs" />
      <Compile Include="Assets\scripts\Level\Key.cs" />
+     <Compile Include="Assets\scripts\Level\ObtenerLlave.cs" />
      <Compile Include="Assets\scripts\Menu_Manager.cs" />
      <Compile Include="Assets\scripts\Player\Life_Sys.cs" />
      <Compile Include="Assets\scripts\Player\Player_Controller.cs" />

@@ -7,20 +7,38 @@ public class damage : MonoBehaviour
     public static int vidaE;
     public float fuerza;
     public float fuerza2;
+
+    public float tiempo = 3f;
     private void Start() {
         vidaE = 0;
     }
-private void OnTriggerEnter(Collider other) {
-    
+
+    private void OnTriggerStay(Collider other) {
     if(other.tag == "Enemy"){
-        if(vidaE < 2){
+        if(vidaE <= 2){
         other.GetComponent<Rigidbody>().AddForce(transform.forward  * fuerza, ForceMode.Impulse);
         other.GetComponent<Rigidbody>().AddForce(0, fuerza2, 0);
         vidaE ++;
         }else{
             other.gameObject.GetComponent<Animator>().SetInteger("moving",13);
             
-            StartCoroutine(destroyAfterDeath(other.gameObject));
+           // StartCoroutine(destroyAfterDeath(other.gameObject));
+            }
+
+        }
+    }
+
+private void OnTriggerEnter(Collider other) {
+    
+    if(other.tag == "Enemy"){
+        if(vidaE <= 2){
+        other.GetComponent<Rigidbody>().AddForce(transform.forward  * fuerza, ForceMode.Impulse);
+        other.GetComponent<Rigidbody>().AddForce(0, fuerza2, 0);
+        vidaE ++;
+        }else{
+            other.gameObject.GetComponent<Animator>().SetInteger("moving",13);
+            
+           // StartCoroutine(destroyAfterDeath(other.gameObject));
         }
 
     }
@@ -29,7 +47,7 @@ private void OnTriggerEnter(Collider other) {
 
 IEnumerator destroyAfterDeath(GameObject mutant){
 
-    yield return new WaitForSeconds(3.4f);
+    yield return new WaitForSeconds(tiempo);
     Destroy(mutant);
 }
 }

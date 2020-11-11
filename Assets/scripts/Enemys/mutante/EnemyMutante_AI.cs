@@ -18,6 +18,7 @@ public class EnemyMutante_AI : MonoBehaviour
     public float fuerza = 15f;
     public float fuerza2 = 10f;
     
+    bool death = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,14 @@ public class EnemyMutante_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+            if(Manim.GetCurrentAnimatorStateInfo(0).IsName("thc4_arma|st_death")){
+                speed = 0;
+                RotSpeed =0;
+                fuerza = 0f;
+                fuerza2 = 0f;
+                AtackColl.enabled = false;
+                death = true;
+            }
     }
 
 
@@ -48,14 +56,14 @@ public class EnemyMutante_AI : MonoBehaviour
                                                     Quaternion.LookRotation(direccion),
                                                     Time.deltaTime * RotSpeed);
 
-        if (Vector3.Distance(transform.position, lookAtGoal) > disMinima  && Vector3.Distance(transform.position, lookAtGoal) < disMaxima)
+        if (Vector3.Distance(transform.position, lookAtGoal) > disMinima  && Vector3.Distance(transform.position, lookAtGoal) < disMaxima && !death)
         {
 
             AtackColl.enabled = false;
             Manim.SetInteger("moving",1);
             Manim.SetInteger("battle",0);
             this.transform.Translate(0, 0, speed * Time.deltaTime);
-        }else if(Vector3.Distance(transform.position, lookAtGoal) < disMinima){
+        }else if(Vector3.Distance(transform.position, lookAtGoal) < disMinima && !death){
 
             Manim.SetInteger("moving",0);
             
@@ -107,7 +115,7 @@ private void OnTriggerEnter(Collider other) {
         other.GetComponent<Rigidbody>().AddForce(transform.forward  * fuerza, ForceMode.Impulse);
         other.GetComponent<Rigidbody>().AddForce(0, fuerza2, 0);
         other.GetComponent<Animator>().SetTrigger("IsHurt");
-        other.GetComponent<Life_Sys>().TakeDamage(5);
+        other.GetComponent<Life_Sys>().TakeDamage(1);
     }
 }
 

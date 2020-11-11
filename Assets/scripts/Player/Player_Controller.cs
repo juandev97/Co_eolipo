@@ -7,6 +7,8 @@ public class Player_Controller : MonoBehaviour
     static Animator anim;
     private move movi;
     public float AuxSpeed;
+
+    public float tiempo;
     public GameObject hitbox;
     // Start is called before the first frame update
     void Start()
@@ -37,17 +39,28 @@ public class Player_Controller : MonoBehaviour
         if(Input.GetButtonDown("Fire1")){
 
             anim.SetBool("IsHitting",true);
-            hitbox.SetActive(true);
-            movi.setSpeed(0f);
             
-        }else{
-            anim.SetBool("IsHitting",false);
-            movi.setSpeed(AuxSpeed);
-            hitbox.SetActive(false);
+            StartCoroutine(ataque());
         }
     }
 
     public void dolor(){
         anim.SetTrigger("IsHurt");
     }
+
+
+IEnumerator ataque(){
+
+    movi.setSpeed(0f);  
+    hitbox.SetActive(true);
+    yield return new WaitForSeconds(tiempo);
+    
+    hitbox.SetActive(false);
+    anim.SetBool("IsHitting",false);
+    movi.setSpeed(AuxSpeed);
+    
+    }
+
 }
+
+
